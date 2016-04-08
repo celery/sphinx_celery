@@ -26,6 +26,7 @@ EXTENSIONS = [
     'sphinx_celery.signal_crossref',
     'sphinx_celery.setting_crossref',
     'sphinx_celery.apicheck',
+    'sphinx_celery.configcheck',
 ]
 
 INTERSPHINX_MAPPING = {

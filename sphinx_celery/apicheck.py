@@ -59,16 +59,14 @@ from __future__ import absolute_import, unicode_literals
 
 import importlib
 import os
-import pickle
-import re
 
 from collections import defaultdict
 from six import string_types
 
-from sphinx.builders import Builder
 from sphinx.ext import autodoc
 from sphinx.util.console import bold, darkgreen, green, red
 
+from .builders import BaseBuilder
 from .utils import bytes_if_py2
 
 DEFAULT_IGNORE = [r'.*?\.tests.*']
@@ -79,8 +77,6 @@ SUBHEADER = '-'
 ERR = 'ERROR'
 ERR_MISSING = '{error}: In index but module does not exist: {module}'
 ERR_UNDOCUMENTED = 'Undocumented Autodoc Modules'
-ERR_INVALID_REGEX = 'Invalid regex {0!r} in apicheck_ignore_modules: {1!r}'
-
 OK_STATUS = 'OK: All modules documented :o)'
 
 NOK_STATUS = """
@@ -139,9 +135,10 @@ def find_python_modules(package):
                     yield '.'.join([package, filename])[:-3]
 
 
-class APICheckBuilder(Builder):
+class APICheckBuilder(BaseBuilder):
 
     name = 'apicheck'
+    pickle_filename = 'apicheck.pickle'
 
     find_modules = {
         'py': find_python_modules,
@@ -157,22 +154,6 @@ class APICheckBuilder(Builder):
 
         self.undocumented = defaultdict(list)
         self.all_modules = defaultdict(set)
-
-    def compile_regex(self, regex):
-        if not regex.startswith('^'):
-            regex = '^{0}'.format(regex)
-        if not regex.endswith('$'):
-            regex = '{0}$'.format(regex)
-        try:
-            return re.compile(regex)
-        except Exception as exc:
-            self.warn(ERR_INVALID_REGEX.format(regex, exc))
-
-    def compile_regexes(self, regexes):
-        return [self.compile_regex(regex) for regex in regexes]
-
-    def get_outdated_docs(self):
-        return 'apicheck overview'
 
     def is_ignored_module(self, module):
         return any(regex.match(module) for regex in self.ignore_patterns)
@@ -236,16 +217,11 @@ class APICheckBuilder(Builder):
             'undocumented': dict(self.undocumented),
         }
 
-    def finish(self):
-        picklepath = os.path.join(self.outdir, 'apicheck.pickle')
-        with open(picklepath, mode='wb') as fh:
-            pickle.dump(self.as_dict(), fh)
-
 
 def setup(app):
     app.add_builder(APICheckBuilder)
     app.add_config_value(
-        bytes_if_py2('apicheck_ignore_modules'), [".*?\.tests.*"], False)
+        bytes_if_py2('apicheck_ignore_modules'), [], False)
     app.add_config_value(
         bytes_if_py2('apicheck_domains'), ['py'], False)
     app.add_config_value(
