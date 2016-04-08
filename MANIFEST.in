@@ -1,0 +1,8 @@
+include README.rst Changelog LICENSE
+recursive-include extra README *.py
+recursive-include requirements *.txt
+recursive-include sphinx_celery *.conf
+recursive-include sphinx_celery *.css_t
+recursive-include sphinx_celery *.html
+recursive-include sphinx_celery *.js
+recursive-include sphinx_celery *.css

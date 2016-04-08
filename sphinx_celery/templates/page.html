@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="deck">
+
+    {% if version >= version_dev %}
+        <p class="developmentversion">
+        This document is for {{ project }}'s development version, which can be
+        significantly different from previous releases. Get the stable docs here:
+
+        <a href="{{ canonical_stable_url }}/{{ pagename }}{{ file_suffix }}">{{ version_stable }}</a>.
+        </p>
+    {% else %}
+        <p>
+        This document describes the current stable version of {{project}} ({{ version }}).
+        For development docs,
+        <a href="{{ canonical_dev_url }}/{{ pagename }}{{ file_suffix }}">go here</a>.
+        </p>
+    {% endif %}
+
+</div>
+    {{ body }}
+{% endblock %}
