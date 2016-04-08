@@ -66,6 +66,7 @@ from collections import defaultdict
 from six import string_types
 
 from sphinx.builders import Builder
+from sphinx.ext import autodoc
 from sphinx.util.console import bold, darkgreen, green, red
 
 from .utils import bytes_if_py2
@@ -75,7 +76,9 @@ DEFAULT_IGNORE = [r'.*?\.tests.*']
 TITLEHEADER = '='
 SUBHEADER = '-'
 
-ERR_MISSING = 'Undocumented Autodoc Modules'
+ERR = 'ERROR'
+ERR_MISSING = '{error}: In index but module does not exist: {module}'
+ERR_UNDOCUMENTED = 'Undocumented Autodoc Modules'
 ERR_INVALID_REGEX = 'Invalid regex {0!r} in apicheck_ignore_modules: {1!r}'
 
 OK_STATUS = 'OK: All modules documented :o)'
@@ -93,6 +96,16 @@ DOMAIN_FORMAT = """\
 """
 
 MODULE_FORMAT = '- {module}'
+
+
+class ModuleDocumenter(autodoc.ModuleDocumenter):
+    missing_modules = set()
+
+    def import_object(self):
+        if not super(ModuleDocumenter, self).import_object():
+            self.missing_modules.add(self.modname)
+            return False
+        return True
 
 
 def title(s, spacing=2, sep=TITLEHEADER):
@@ -143,6 +156,7 @@ class APICheckBuilder(Builder):
             self.config.apicheck_package or self.config.project.lower())
 
         self.undocumented = defaultdict(list)
+        self.all_modules = defaultdict(set)
 
     def compile_regex(self, regex):
         if not regex.startswith('^'):
@@ -166,16 +180,21 @@ class APICheckBuilder(Builder):
     def write(self, *ignored):
         for domain in self.check_domains:
             self.build_coverage(domain)
-        self.write_coverage(self.check_domains)
+        self.check_missing()
+        if not self.app.statuscode:
+            self.write_coverage(self.check_domains)
 
     def build_coverage(self, domain):
+        self.all_modules[domain].update(self.find_modules[domain](
+            self.check_package,
+        ))
         self.undocumented[domain].extend(self.find_undocumented(
-            self.check_package, domain, self.env.domaindata[domain]['modules'],
+            domain, self.env.domaindata[domain]['modules'],
         ))
 
-    def find_undocumented(self, package, domain, documented):
+    def find_undocumented(self, domain, documented):
         return (
-            mod for mod in self.find_modules[domain](package)
+            mod for mod in self.all_modules[domain]
             if mod not in documented and not self.is_ignored_module(mod)
         )
 
@@ -187,9 +206,17 @@ class APICheckBuilder(Builder):
         else:
             print(green(OK_STATUS))
 
+    def check_missing(self):
+        for mod in ModuleDocumenter.missing_modules:
+            self.app.statuscode = 3
+            print(ERR_MISSING.format(
+                error=red(ERR),
+                module=bold(mod),
+            ))
+
     def format_undocumented_domains(self, domains):
         return NOK_STATUS.format(
-            title=title(ERR_MISSING),
+            title=title(ERR_UNDOCUMENTED),
             undocumented='\n'.join(
                 self.format_undocumented_domain(domain) for domain in domains
             ),
@@ -223,3 +250,5 @@ def setup(app):
         bytes_if_py2('apicheck_domains'), ['py'], False)
     app.add_config_value(
         bytes_if_py2('apicheck_package'), None, False)
+    reg = autodoc.AutoDirective._registry
+    reg[ModuleDocumenter.objtype] = ModuleDocumenter
