@@ -88,7 +88,6 @@ class ConfigCheckBuilder(BaseBuilder):
         )
         self.should_ignore = (
             self.config.configcheck_should_ignore or (lambda s: False))
-        print(self.should_ignore)
         self.project_settings = self.config.configcheck_project_settings
         self.undocumented = set()
 
