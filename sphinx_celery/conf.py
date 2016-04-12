@@ -19,6 +19,7 @@ EXTENSIONS = [
     'sphinx.ext.imgmath',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
+    'sphinx.ext.extlinks',
     'sphinxcontrib.cheeseshop',
 
     'sphinx_celery.autodocargspec',
