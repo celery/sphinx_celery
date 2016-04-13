@@ -145,6 +145,8 @@ def build_config(
         extra_intersphinx_mapping={},
         include_intersphinx=frozenset(),
         exclude_intersphinx=frozenset(),
+        spelling_lang='en_US',
+        spelling_show_suggestions=True,
         **kwargs):
     add_paths(config_file, path_additions)
     if configure_django_settings or django_settings:
@@ -169,6 +171,10 @@ def build_config(
         templates_path.append(get_html_templates_path())
 
     version = '.'.join(map(str, package.VERSION[0:2]))
+
+    extensions = extensions + extra_extensions
+    if os.environ.get('SPELLCHECK'):
+        extensions.append('sphinxcontrib.spelling')
 
     conf = dict(
         extensions=extensions + extra_extensions,
@@ -302,5 +308,9 @@ def build_config(
 
         # The depth of the table of contents in toc.ncx.
         epub_tocdepth=3,
+
+        # -- spelling
+        spelling_lang=spelling_lang,
+        spelling_show_suggestions=spelling_show_suggestions,
     )
     return dict(conf, **kwargs)
