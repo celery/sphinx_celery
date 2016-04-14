@@ -1,6 +1,26 @@
 Changes
 =======
 
+.. _version-1.2.0:
+
+1.2.0
+=====
+:release-date: 2016-04-14 11:22 P.M PDT
+
+- New extlink crossref type: ``:github_username:``.
+
+- New extlink crossref type: ``:github_branch:``.
+
+- New extlink crossref type: ``:sha:``.
+
+- Adds :pypi:`sphinxcontrib-spelling`.
+
+    To check spelling mistakes run the following command:
+
+    .. code-block:: console
+
+        $ sphinx-build -b spelling
+
 .. _version-1.1.0:
 
 1.1.0
