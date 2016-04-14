@@ -147,6 +147,7 @@ def build_config(
         exclude_intersphinx=frozenset(),
         spelling_lang='en_US',
         spelling_show_suggestions=True,
+        extlinks=None,
         **kwargs):
     add_paths(config_file, path_additions)
     if configure_django_settings or django_settings:
@@ -155,6 +156,19 @@ def build_config(
     description = description or package.__doc__
     author = author or package.__author__
     author_name = author_name or author
+    extlinks = extlinks or {}
+
+    extlinks.setdefault('sha', (
+        'https://github.com/{0}/commit/%s'.format(github_project),
+        'GitHub SHA',
+    ))
+    extlinks.setdefault('github_branch', (
+        'https://github.com/{0}/tree/%s'.format(github_project),
+        'GitHub branch',
+    ))
+    extlinks.setdefault('github_user', (
+        'https://github.com/%s/', 'GitHub user',
+    ))
 
     if not canonical_dev_url:
         canonical_dev_url = '/'.join([
@@ -312,5 +326,8 @@ def build_config(
         # -- spelling
         spelling_lang=spelling_lang,
         spelling_show_suggestions=spelling_show_suggestions,
+
+        # -- extlinks
+        extlinks=extlinks,
     )
     return dict(conf, **kwargs)
