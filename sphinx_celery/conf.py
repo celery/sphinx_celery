@@ -34,7 +34,7 @@ INTERSPHINX_MAPPING = {
     'python': ('http://docs.python.org/dev/', None),
     'sphinx': ('http://www.sphinx-doc.org/en/stable/', None),
     'kombu': ('http://kombu.readthedocs.org/en/master/', None),
-    'celery': ('http://docs.celeryproject.org/en/latest', None),
+    'celery': ('http://docs.celeryproject.org/en/master', None),
     'djcelery': ('http://django-celery.readthedocs.org/en/latest/', None),
     'cyme': ('http://cyme.readthedocs.org/en/latest/', None),
     'amqp': ('http://amqp.readthedocs.org/en/latest/', None),
