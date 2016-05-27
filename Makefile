@@ -2,7 +2,8 @@ PROJ=sphinx_celery
 PYTHON=python
 
 flakecheck:
-	flake8 "$(PROJ)"
+	# the only way to enable all errors is to ignore something bogus
+	flake8 --ignore=X999 "$(PROJ)"
 
 flakediag:
 	-$(MAKE) flakecheck
