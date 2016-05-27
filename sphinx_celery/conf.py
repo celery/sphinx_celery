@@ -20,7 +20,6 @@ EXTENSIONS = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.extlinks',
-    'sphinxcontrib.cheeseshop',
 
     'sphinx_celery.autodocargspec',
     'sphinx_celery.github_issues',
@@ -160,14 +159,17 @@ def build_config(
 
     extlinks.setdefault('sha', (
         'https://github.com/{0}/commit/%s'.format(github_project),
-        'GitHub SHA',
+        'GitHub SHA@',
     ))
     extlinks.setdefault('github_branch', (
         'https://github.com/{0}/tree/%s'.format(github_project),
         'GitHub branch',
     ))
     extlinks.setdefault('github_user', (
-        'https://github.com/%s/', 'GitHub user',
+        'https://github.com/%s/', '@',
+    ))
+    extlinks.setdefault('pypi', (
+        'https://pypi.python.org/pypi/%s/', '',
     ))
 
     if not canonical_dev_url:
