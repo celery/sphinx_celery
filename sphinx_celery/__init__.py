@@ -16,9 +16,9 @@ __docformat__ = 'restructuredtext'
 
 __all__ = ['get_html_templates_path', 'get_html_theme_path']
 
-version_info_t = namedtuple(
-    'version_info_t', ('major', 'minor', 'micro', 'releaselevel', 'serial'),
-)
+version_info_t = namedtuple('version_info_t', (
+    'major', 'minor', 'micro', 'releaselevel', 'serial',
+))
 
 # bumpversion can only search for {current_version}
 # so we have to parse the version here.
