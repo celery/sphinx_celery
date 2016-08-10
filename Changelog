@@ -1,11 +1,22 @@
 Changes
 =======
 
+.. _version-1.3.1:
+
+1.3.1
+=====
+:release-date: 2016-08-10 01:40 p.m. PDT
+
+- No longer depends on sphinxcontrib-spelling.
+
+    This library depends on the enchant C library being installed,
+    and are crashing Travis builds.
+
 .. _version-1.3.0:
 
 1.3.0
 =====
-:release-date: 2016-05-27 01:41 P.M PDT
+:release-date: 2016-05-27 01:41 p.m. PDT
 
 - Removes dependency on non-Python3 compatible sphinxcontrib-cheeseshop
 
@@ -15,7 +26,7 @@ Changes
 
 1.2.0
 =====
-:release-date: 2016-04-14 11:22 P.M PDT
+:release-date: 2016-04-14 11:22 p.m. PDT
 
 - New extlink crossref type: ``:github_username:``.
 
@@ -35,7 +46,7 @@ Changes
 
 1.1.0
 =====
-:release-date: 2016-04-08 04:18 P.M PDT
+:release-date: 2016-04-08 04:18 p.m. PDT
 
 - New apicheck extension
 
@@ -45,7 +56,7 @@ Changes
 
 1.0.0
 =====
-:release-date: 2016-04-07 05:19 P.M PDT
+:release-date: 2016-04-07 05:19 p.m. PDT
 :release-by: Ask Solem
 
 - Initial release
