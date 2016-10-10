@@ -105,6 +105,7 @@ setup(
     url=meta['homepage'],
     platforms=['any'],
     license='BSD',
+    keywords='sphinx docs',
     packages=find_packages(exclude=['ez_setup', 'tests', 'tests.*']),
     package_data={
         'sphinx_celery': [
