@@ -50,7 +50,7 @@ INTERSPHINX_MAPPING = {
     'eventlet': ('http://eventlet.net/doc/', None),
     'gevent': ('http://gevent.org/', None),
     'pyOpenSSL': ('http://pyopenssl.readthedocs.io/en/stable/', None),
-    'nose': ('http://nose.readthedocs.io/en/latest', None),
+    'pytest': ('http://doc.pytest.org/en/latest/', None),
     'tox': ('http://tox.readthedocs.io/en/latest', None),
 }
 
