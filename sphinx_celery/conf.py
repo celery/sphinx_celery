@@ -170,6 +170,9 @@ def build_config(
     extlinks.setdefault('pypi', (
         'https://pypi.python.org/pypi/%s/', '',
     ))
+    extlinks.setdefault('wikipedia', (
+        'https://en.wikipedia.org/wiki/%s', '',
+    ))
 
     if not canonical_dev_url:
         canonical_dev_url = '/'.join([
