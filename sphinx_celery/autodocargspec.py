@@ -14,6 +14,8 @@ def wrapped_getargspec(fun, *args, **kwargs):
         except AttributeError:
             break
     return inspect.getargspec(fun, *args, **kwargs)
+
+
 _autodoc.getargspec = wrapped_getargspec
 
 
