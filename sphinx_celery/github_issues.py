@@ -57,6 +57,7 @@ class Issues(Transform):
                 refnode = pending_xref()
                 refnode['reftarget'] = issue_id
                 refnode['reftype'] = 'issue'
+                refnode['refdomain'] = 'github'
                 refnode['github_project'] = github_project
                 reftitle = issuetext
                 refnode.append(nodes.inline(
