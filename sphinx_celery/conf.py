@@ -44,7 +44,7 @@ INTERSPHINX_MAPPING = {
     'boto': ('http://boto.readthedocs.io/en/latest/', None),
     'sqlalchemy': ('http://sqlalchemy.readthedocs.io/en/latest', None),
     'kazoo': ('http://kazoo.readthedocs.io/en/latest/', None),
-    'msgpack': ('http://pythonhosted.org/msgpack-python/', None),
+    'msgpack': ('http://msgpack-python.readthedocs.io/en/latest/', None),
     'riak': ('http://basho.github.io/riak-python-client/', None),
     'pylibmc': ('http://sendapatch.se/projects/pylibmc/', None),
     'eventlet': ('http://eventlet.net/doc/', None),
