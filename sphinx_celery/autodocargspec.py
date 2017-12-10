@@ -21,3 +21,7 @@ _autodoc.getargspec = wrapped_getargspec
 
 def setup(app):
     app.require_sphinx('1.0')
+    
+    return {
+        'parallel_read_safe': True
+    }

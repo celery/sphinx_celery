@@ -246,8 +246,6 @@ def build_config(
         # "default.css" will overwrite the builtin "default.css".
         html_static_path=['_static'],
 
-        html_use_smartypants=True,
-
         add_module_names=True,
         highlight_language='python3',
 

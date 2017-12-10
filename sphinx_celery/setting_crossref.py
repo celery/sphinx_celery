@@ -9,3 +9,7 @@ def setup(app):
         rolename=bytes_if_py2('setting'),
         indextemplate=bytes_if_py2('pair: %s; setting'),
     )
+
+    return {
+        'parallel_read_safe': True
+    }
