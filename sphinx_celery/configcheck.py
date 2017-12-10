@@ -78,7 +78,6 @@ OK_STATUS = 'OK: All settings documented :o)'
 
 
 class ConfigCheckBuilder(BaseBuilder):
-
     name = 'configcheck'
     pickle_filename = 'configcheck.pickle'
 
@@ -136,3 +135,7 @@ def setup(app):
         bytes_if_py2('configcheck_project_settings'), None, False)
     app.add_config_value(
         bytes_if_py2('configcheck_should_ignore'), None, False)
+
+    return {
+        'parallel_read_safe': True
+    }

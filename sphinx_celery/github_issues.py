@@ -109,3 +109,7 @@ def setup(app):
 
     app.connect(str('builder-inited'), init_transformer)
     app.connect(str('missing-reference'), resolve_issue_reference)
+
+    return {
+        'parallel_read_safe': True
+    }
