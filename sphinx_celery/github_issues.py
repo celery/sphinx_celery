@@ -57,6 +57,7 @@ class Issues(Transform):
                 refnode = pending_xref()
                 refnode['reftarget'] = issue_id
                 refnode['reftype'] = 'issue'
+                refnode['refdomain'] = 'github'
                 refnode['github_project'] = github_project
                 reftitle = issuetext
                 refnode.append(nodes.inline(
@@ -108,3 +109,7 @@ def setup(app):
 
     app.connect(str('builder-inited'), init_transformer)
     app.connect(str('missing-reference'), resolve_issue_reference)
+
+    return {
+        'parallel_read_safe': True
+    }
