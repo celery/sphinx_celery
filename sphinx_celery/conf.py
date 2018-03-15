@@ -302,7 +302,7 @@ def build_config(
             ],
         },
         # Bibliographic Dublin Core info.
-        epub_title='Celery Manual, Version {0}'.format(version),
+        epub_title='{0} Manual, Version {1}'.format(project, version),
         epub_author=author_name,
         epub_publisher=publisher or author_name,
         epub_copyright=copyright,
