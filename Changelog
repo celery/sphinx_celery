@@ -1,6 +1,36 @@
 Changes
 =======
 
+.. _version-1.4.0:
+
+1.4.0
+=====
+:release-date: 2017-03-15 11:26 p.m. PDT
+
+- Now requires :pypi:`Spinx` 1.7.1
+
+- Added ``:wikipedia:`` extlink.
+
+- ``epub_title`` was hardcoded to Celery, now uses project name.
+
+- :pypi:`pytest` added as intersphinx mapping, :pypi:`nose` removed.
+
+- Removed unnecessary dependency on :pypi:`case`
+
+    Contributed by Christopher Hoskin.
+
+- All extensions are now marked as ``read_parallel_safe``.
+
+    Contributed by Omer Katz.
+
+- Fixed intersphinx URL and Github issue resolution.
+
+    Contributed by George Psarakis.
+
+- Update :pypi:`msgpack-python` documentation URL
+
+    Contributed by George Psarakis.
+
 .. _version-1.3.1:
 
 1.3.1
