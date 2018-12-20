@@ -48,7 +48,7 @@ INTERSPHINX_MAPPING = {
     'riak': ('http://basho.github.io/riak-python-client/', None),
     'pylibmc': ('http://sendapatch.se/projects/pylibmc/', None),
     'eventlet': ('http://eventlet.net/doc/', None),
-    'gevent': ('http://gevent.org/', None),
+    'gevent': ('http://www.gevent.org/', None),
     'pyOpenSSL': ('http://pyopenssl.readthedocs.io/en/stable/', None),
     'pytest': ('http://doc.pytest.org/en/latest/', None),
     'tox': ('http://tox.readthedocs.io/en/latest', None),
