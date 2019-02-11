@@ -229,7 +229,6 @@ def setup(app):
     reg = autodoc.AutoDirective._registry
     reg[ModuleDocumenter.objtype] = ModuleDocumenter
 
-
     return {
         'parallel_read_safe': True
     }
