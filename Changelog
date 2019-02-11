@@ -1,6 +1,15 @@
 Changes
 =======
 
+.. _version-1.4.1:
+
+1.4.1
+=====
+
+- Update intersphinx mapping url for gevent
+
+- PEP8 fixes.
+
 .. _version-1.4.0:
 
 1.4.0
