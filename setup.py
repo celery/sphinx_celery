@@ -126,7 +126,7 @@ setup(
     classifiers=classifiers,
     entry_points={
         'sphinx.html_themes': [
-            'path = sphinx_celery:get_html_theme_path',
+            'sphinx_celery = sphinx_celery:get_html_theme_path',
         ],
     },
     long_description=long_description,
