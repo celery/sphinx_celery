@@ -1,6 +1,16 @@
 Changes
 =======
 
+.. _version-1.4.2:
+
+1.4.2
+=====
+
+:release-date: 2019-02-13 2:00 p.m. UTC+2
+
+- Use HTTPS for object inventories.
+- Fix deprecation warning.
+
 .. _version-1.4.1:
 
 1.4.1
