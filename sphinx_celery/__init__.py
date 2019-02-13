@@ -6,7 +6,7 @@ import re
 
 from collections import namedtuple
 
-__version__ = '1.4.5'
+__version__ = '1.4.6'
 __author__ = 'Ask Solem'
 __contact__ = 'ask@celeryproject.org'
 __homepage__ = 'http://github.com/celery/sphinx_celery'
