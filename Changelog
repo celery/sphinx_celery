@@ -1,6 +1,14 @@
 Changes
 =======
 
+.. _version-1.4.5:
+
+1.4.5
+=====
+:release-date: 2019-02-13 2:00 p.m. UTC+2
+
+- Fix link to Kombu object inventory.
+
 .. _version-1.4.4:
 
 1.4.4
