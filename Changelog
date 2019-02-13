@@ -1,6 +1,14 @@
 Changes
 =======
 
+.. _version-1.4.4:
+
+1.4.4
+=====
+:release-date: 2019-02-13 2:00 p.m. UTC+2
+
+- Revert entrypoint fix for now.
+
 .. _version-1.4.3:
 
 1.4.3
