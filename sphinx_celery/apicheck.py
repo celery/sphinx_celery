@@ -63,6 +63,7 @@ import os
 from collections import defaultdict
 from six import string_types
 
+import sphinx
 from sphinx.ext import autodoc
 from sphinx.util.console import bold, darkgreen, green, red
 
@@ -126,7 +127,7 @@ def find_python_modules(package):
     abs = os.path.abspath(current_dist)
     dist_name = os.path.basename(abs)
 
-    for dirpath, dirnames, filenames in os.walk(abs):
+    for dirpath, _, filenames in os.walk(abs):
         package = (dist_name + dirpath[len(abs):]).replace('/', '.')
         if '__init__.py' in filenames:
             yield package
@@ -218,6 +219,24 @@ class APICheckBuilder(BaseBuilder):
         }
 
 
+def _add_documenter_override(app, cls):
+    # Install documenter for automodule without generating warning.
+    from sphinx.ext.autodoc.directive import AutodocDirective
+    app.registry.add_documenter(cls.objtype, cls)
+    directive_name = 'auto' + cls.objtype
+    if sphinx.version_info < (1, 8):
+        try:
+            from docutils.parsers.rst import directives
+        except ImportError:
+            pass
+        else:
+            directives._directives.pop(directive_name, None)
+        app.add_directive(directive_name, AutodocDirective)
+    else:
+        # override was added in Sphinx 1.8
+        app.add_directive(directive_name, AutodocDirective, override=True)
+
+
 def setup(app):
     app.add_builder(APICheckBuilder)
     app.add_config_value(
@@ -226,8 +245,8 @@ def setup(app):
         bytes_if_py2('apicheck_domains'), ['py'], False)
     app.add_config_value(
         bytes_if_py2('apicheck_package'), None, False)
-    app.add_autodocumenter(ModuleDocumenter)
+    _add_documenter_override(app, ModuleDocumenter)
 
     return {
-        'parallel_read_safe': True
+        'parallel_read_safe': True,
     }

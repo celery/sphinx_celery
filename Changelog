@@ -1,6 +1,17 @@
 Changes
 =======
 
+.. _version-1.4.8:
+
+1.4.8
+=====
+:release-date: 2019-03-29 12:28 p.m. UTC-8
+
+- apicheck: Removes warning about directive automodule being overridden
+  when running apicheck.
+
+    Tested on :pypi:`Sphinx` versions 1.7.1, 1.8.0, 1.8.5 and 2.0.0.
+
 .. _version-1.4.7:
 
 1.4.7
