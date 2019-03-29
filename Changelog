@@ -1,6 +1,14 @@
 Changes
 =======
 
+.. _version-1.4.7:
+
+1.4.7
+=====
+:release-date: 2019-03-29 10:00 a.m. UTC-8
+
+- apicheck: Support for :pypi:`Sphinx` 2.0.
+
 .. _version-1.4.6:
 
 1.4.6
