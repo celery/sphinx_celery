@@ -226,8 +226,7 @@ def setup(app):
         bytes_if_py2('apicheck_domains'), ['py'], False)
     app.add_config_value(
         bytes_if_py2('apicheck_package'), None, False)
-    reg = autodoc.AutoDirective._registry
-    reg[ModuleDocumenter.objtype] = ModuleDocumenter
+    app.add_autodocumenter(ModuleDocumenter)
 
     return {
         'parallel_read_safe': True
