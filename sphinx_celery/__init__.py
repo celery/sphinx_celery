@@ -14,7 +14,7 @@ __docformat__ = 'restructuredtext'
 
 # -eof meta-
 
-__all__ = ['get_html_templates_path', 'get_html_theme_path']
+__all__ = ['get_html_templates_path', 'get_html_theme_path', 'setup']
 
 version_info_t = namedtuple('version_info_t', (
     'major', 'minor', 'micro', 'releaselevel', 'serial',
@@ -39,3 +39,7 @@ def get_html_templates_path():
         os.path.abspath(os.path.dirname((__file__))),
         'templates',
     )
+
+
+def setup(app):
+    app.add_html_theme('sphinx_celery', os.path.abspath(os.path.dirname(__file__)))

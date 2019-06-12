@@ -125,8 +125,8 @@ setup(
     test_suite='nose.collector',
     classifiers=classifiers,
     entry_points={
-        'sphinx_themes': [
-            'path = sphinx_celery:get_html_theme_path',
+        'sphinx.html_themes': [
+            'sphinx_celery = sphinx_celery',
         ],
     },
     long_description=long_description,
