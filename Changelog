@@ -1,6 +1,15 @@
 Changes
 =======
 
+.. _version-2.0.0:
+
+2.0.0
+=====
+:release-date: 2019-06-12 3:00 p.m. UTC+3
+
+- Fix support for Sphinx 2.0
+- Drop support for Shpinx < 2.0
+
 .. _version-1.4.8:
 
 1.4.8
