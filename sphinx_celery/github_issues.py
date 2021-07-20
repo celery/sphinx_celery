@@ -30,13 +30,13 @@ class Issues(Transform):
         config = self.document.settings.env.config
         github_project = config.github_project
         issue_pattern = config.github_issue_pattern
-        if isinstance(issue_pattern, six.string_types):
+        if isinstance(issue_pattern, str):
             issue_pattern = re.compile(issue_pattern)
         for node in self.document.traverse(nodes.Text):
             parent = node.parent
             if isinstance(parent, (nodes.literal, nodes.FixedTextElement)):
                 continue
-            text = six.text_type(node)
+            text = str(node)
             new_nodes = []
             last_issue_ref_end = 0
             for match in issue_pattern.finditer(text):
@@ -80,7 +80,7 @@ def resolve_issue_reference(app, env, node, contnode):
 
     issue = Issue(issue_id, None, URL.format(project=project,
                                              issue_id=issue_id))
-    conttext = six.text_type(contnode[0])
+    conttext = str(contnode[0])
     formatted_conttext = nodes.Text(conttext.format(issue=issue))
     formatted_contnode = nodes.inline(conttext, formatted_conttext,
                                       classes=contnode['classes'])

@@ -97,8 +97,7 @@ class ConfigCheckBuilder(BaseBuilder):
 
     def documented_settings(self):
         return {
-            name for reftype, name in six.viewkeys(
-                self.app.env.domaindata['std']['objects'])
+            name for reftype, name in self.app.env.domaindata['std']['objects'].keys()
             if reftype == 'setting'
         }
 
