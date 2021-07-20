@@ -64,7 +64,7 @@ Example:
 
 """
 
-from six import iterkeys as keys
+import six
 from sphinx.util.console import bold, green, red
 
 from .builders import BaseBuilder
@@ -97,7 +97,7 @@ class ConfigCheckBuilder(BaseBuilder):
 
     def documented_settings(self):
         return {
-            name for reftype, name in keys(
+            name for reftype, name in six.viewkeys(
                 self.app.env.domaindata['std']['objects'])
             if reftype == 'setting'
         }
