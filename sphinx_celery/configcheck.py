@@ -66,7 +66,6 @@ Example:
 from __future__ import absolute_import, unicode_literals
 
 from six import iterkeys as keys
-
 from sphinx.util.console import bold, green, red
 
 from .builders import BaseBuilder

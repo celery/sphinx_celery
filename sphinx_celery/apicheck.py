@@ -59,11 +59,10 @@ from __future__ import absolute_import, unicode_literals
 
 import importlib
 import os
-
 from collections import defaultdict
-from six import string_types
 
 import sphinx
+from six import string_types
 from sphinx.ext import autodoc
 from sphinx.util.console import bold, darkgreen, green, red
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from setuptools import setup, find_packages
-
+import codecs
 import os
 import re
 import sys
-import codecs
+
+from setuptools import find_packages, setup
 
 NAME = 'sphinx_celery'
 extra = {}

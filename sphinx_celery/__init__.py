@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 import re
-
 from collections import namedtuple
 
 __version__ = '2.0.0'

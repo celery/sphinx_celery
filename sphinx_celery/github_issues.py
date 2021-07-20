@@ -7,14 +7,14 @@ per issue, which is not at all needed if we just want to link to issues.
 from __future__ import absolute_import, unicode_literals
 
 import re
-
 from collections import namedtuple
 
 from docutils import nodes
 from docutils.transforms import Transform
-from sphinx.roles import XRefRole
+from six import string_types as str_t
+from six import text_type as text_t
 from sphinx.addnodes import pending_xref
-from six import string_types as str_t, text_type as text_t
+from sphinx.roles import XRefRole
 
 URL = 'https://github.com/{project}/issues/{issue_id}'
 
