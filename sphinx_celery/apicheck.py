@@ -61,7 +61,6 @@ import os
 from collections import defaultdict
 
 import sphinx
-from six import string_types
 from sphinx.ext import autodoc
 from sphinx.util.console import bold, darkgreen, green, red
 

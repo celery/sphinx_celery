@@ -1,8 +1,6 @@
 import os
 import sys
 
-from six import string_types
-
 from . import get_html_templates_path
 
 LINKCODE_URL = 'https://github.com/{proj}/tree/{branch}/{filename}.py'

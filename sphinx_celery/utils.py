@@ -1,5 +1,3 @@
-import six
-
 __all__ = ['bytes_if_py2']
 
 
