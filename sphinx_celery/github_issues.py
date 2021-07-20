@@ -7,7 +7,6 @@ per issue, which is not at all needed if we just want to link to issues.
 from __future__ import absolute_import, unicode_literals
 
 import re
-import sys
 
 from collections import namedtuple
 
@@ -15,16 +14,11 @@ from docutils import nodes
 from docutils.transforms import Transform
 from sphinx.roles import XRefRole
 from sphinx.addnodes import pending_xref
+from six import string_types as str_t, text_type as text_t
 
 URL = 'https://github.com/{project}/issues/{issue_id}'
 
 Issue = namedtuple('Issue', ('id', 'title', 'url'))
-
-if sys.version_info[0] == 3:
-    str_t = text_t = str
-else:
-    str_t = basestring
-    text_t = unicode
 
 
 class IssueRole(XRefRole):

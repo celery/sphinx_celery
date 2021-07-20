@@ -43,6 +43,7 @@ def add_default(m):
 def add_doc(m):
     return (('doc', m.groups()[0]),)
 
+
 pats = {re_meta: add_default, re_doc: add_doc}
 here = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(here, 'sphinx_celery', '__init__.py')) as meta_fh:
@@ -62,8 +63,8 @@ is_jython = sys.platform.startswith('java')
 is_pypy = hasattr(sys, 'pypy_version_info')
 
 
-def strip_comments(l):
-    return l.split('#', 1)[0].strip()
+def strip_comments(line):
+    return line.split('#', 1)[0].strip()
 
 
 def _pip_requirement(req):
@@ -74,17 +75,19 @@ def _pip_requirement(req):
 
 
 def _reqs(*f):
-    return [
-        _pip_requirement(r) for r in (
-            strip_comments(l) for l in open(
-                os.path.join(os.getcwd(), 'requirements', *f)).readlines()
-        ) if r]
+    with open(os.path.join(os.getcwd(), "requirements", *f)) as fp:
+        return [
+            _pip_requirement(r) for r in (
+                strip_comments(line) for line in fp
+            ) if r
+        ]
 
 
 def reqs(*f):
     return [req for subreq in _reqs(*f) for req in subreq]
 
 # -*- Long Description -*-
+
 
 if os.path.exists('README.rst'):
     long_description = codecs.open('README.rst', 'r', 'utf-8').read()

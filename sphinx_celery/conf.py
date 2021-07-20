@@ -5,8 +5,7 @@ import os
 import sys
 
 from . import get_html_templates_path
-
-PY3 = sys.version_info[0] >= 3
+from six import string_types
 
 LINKCODE_URL = 'https://github.com/{proj}/tree/{branch}/{filename}.py'
 GITHUB_BRANCH = 'master'
@@ -53,8 +52,6 @@ INTERSPHINX_MAPPING = {
     'pytest': ('https://doc.pytest.org/en/latest/', None),
     'tox': ('https://tox.readthedocs.io/en/latest', None),
 }
-
-string_types = (str,) if PY3 else (basestring,)
 
 
 def add_paths(config_file, path_additions):
@@ -317,7 +314,7 @@ def build_config(
         epub_identifier=webdomain,
 
         # A unique identification for the text.
-        epub_uid='{0} Manual, Version {0}'.format(project, version),
+        epub_uid='{0} Manual, Version {0}'.format(project),
 
         # A list of files that should not be packed into the epub file.
         epub_exclude_files=['search.html'],

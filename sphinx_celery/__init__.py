@@ -42,4 +42,7 @@ def get_html_templates_path():
 
 
 def setup(app):
-    app.add_html_theme('sphinx_celery', os.path.abspath(os.path.dirname(__file__)))
+    app.add_html_theme(
+        'sphinx_celery',
+        os.path.abspath(os.path.dirname(__file__)),
+    )
