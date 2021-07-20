@@ -4,7 +4,6 @@ Had to modify this as the original will make one Github API request
 per issue, which is not at all needed if we just want to link to issues.
 
 """
-from __future__ import absolute_import, unicode_literals
 
 import re
 from collections import namedtuple
@@ -101,8 +100,8 @@ def setup(app):
     app.add_config_value('github_issue_pattern',
                          re.compile(r'[Ii]ssue #(\d+)'), 'env')
 
-    app.connect(str('builder-inited'), init_transformer)
-    app.connect(str('missing-reference'), resolve_issue_reference)
+    app.connect('builder-inited', init_transformer)
+    app.connect('missing-reference', resolve_issue_reference)
 
     return {
         'parallel_read_safe': True

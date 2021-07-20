@@ -1,5 +1,4 @@
 """Sphinx Celery Theme."""
-from __future__ import absolute_import, unicode_literals
 
 import os
 import re
@@ -35,7 +34,7 @@ def get_html_theme_path():
 
 def get_html_templates_path():
     return os.path.join(
-        os.path.abspath(os.path.dirname((__file__))),
+        os.path.abspath(os.path.dirname(__file__)),
         'templates',
     )
 

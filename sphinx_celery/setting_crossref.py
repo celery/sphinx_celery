@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from .utils import bytes_if_py2
 
 
