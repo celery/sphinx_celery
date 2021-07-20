@@ -66,7 +66,7 @@ def configure_django(django_settings, **config):
     if django_settings:
         os.environ['DJANGO_SETTINGS_MODULE'] = django_settings
     else:
-        from django.conf import settings  # noqa
+        from django.conf import settings
         if not settings.configured:
             settings.configure(**config)
     try:
