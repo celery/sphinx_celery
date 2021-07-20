@@ -10,7 +10,6 @@ from collections import namedtuple
 
 from docutils import nodes
 from docutils.transforms import Transform
-import six
 from sphinx.addnodes import pending_xref
 from sphinx.roles import XRefRole
 

@@ -64,7 +64,6 @@ Example:
 
 """
 
-import six
 from sphinx.util.console import bold, green, red
 
 from .builders import BaseBuilder
@@ -96,8 +95,10 @@ class ConfigCheckBuilder(BaseBuilder):
         self.check_missing()
 
     def documented_settings(self):
+        domaindata_std_objects = self.app.env.domaindata['std']['objects']
         return {
-            name for reftype, name in self.app.env.domaindata['std']['objects'].keys()
+            name
+            for reftype, name in domaindata_std_objects.keys()
             if reftype == 'setting'
         }
 
