@@ -310,7 +310,7 @@ def build_config(
         epub_identifier=webdomain,
 
         # A unique identification for the text.
-        epub_uid='{0} Manual, Version {0}'.format(project),
+        epub_uid=f"{project} Manual, Version {version}",
 
         # A list of files that should not be packed into the epub file.
         epub_exclude_files=['search.html'],
