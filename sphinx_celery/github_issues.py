@@ -4,27 +4,18 @@ Had to modify this as the original will make one Github API request
 per issue, which is not at all needed if we just want to link to issues.
 
 """
-from __future__ import absolute_import, unicode_literals
 
 import re
-import sys
-
 from collections import namedtuple
 
 from docutils import nodes
 from docutils.transforms import Transform
-from sphinx.roles import XRefRole
 from sphinx.addnodes import pending_xref
+from sphinx.roles import XRefRole
 
 URL = 'https://github.com/{project}/issues/{issue_id}'
 
 Issue = namedtuple('Issue', ('id', 'title', 'url'))
-
-if sys.version_info[0] == 3:
-    str_t = text_t = str
-else:
-    str_t = basestring
-    text_t = unicode
 
 
 class IssueRole(XRefRole):
@@ -38,13 +29,13 @@ class Issues(Transform):
         config = self.document.settings.env.config
         github_project = config.github_project
         issue_pattern = config.github_issue_pattern
-        if isinstance(issue_pattern, str_t):
+        if isinstance(issue_pattern, str):
             issue_pattern = re.compile(issue_pattern)
         for node in self.document.traverse(nodes.Text):
             parent = node.parent
             if isinstance(parent, (nodes.literal, nodes.FixedTextElement)):
                 continue
-            text = text_t(node)
+            text = str(node)
             new_nodes = []
             last_issue_ref_end = 0
             for match in issue_pattern.finditer(text):
@@ -88,7 +79,7 @@ def resolve_issue_reference(app, env, node, contnode):
 
     issue = Issue(issue_id, None, URL.format(project=project,
                                              issue_id=issue_id))
-    conttext = text_t(contnode[0])
+    conttext = str(contnode[0])
     formatted_conttext = nodes.Text(conttext.format(issue=issue))
     formatted_contnode = nodes.inline(conttext, formatted_conttext,
                                       classes=contnode['classes'])
@@ -107,8 +98,8 @@ def setup(app):
     app.add_config_value('github_issue_pattern',
                          re.compile(r'[Ii]ssue #(\d+)'), 'env')
 
-    app.connect(str('builder-inited'), init_transformer)
-    app.connect(str('missing-reference'), resolve_issue_reference)
+    app.connect('builder-inited', init_transformer)
+    app.connect('missing-reference', resolve_issue_reference)
 
     return {
         'parallel_read_safe': True

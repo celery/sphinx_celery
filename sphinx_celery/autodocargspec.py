@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from sphinx.ext import autodoc as _autodoc
 from sphinx.util import inspect
 

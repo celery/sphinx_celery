@@ -55,13 +55,10 @@ List of domains to check.
 Default is ``['py']`` and Python is the only domain currently supported.
 
 """
-from __future__ import absolute_import, unicode_literals
 
 import importlib
 import os
-
 from collections import defaultdict
-from six import string_types
 
 import sphinx
 from sphinx.ext import autodoc
@@ -99,7 +96,7 @@ class ModuleDocumenter(autodoc.ModuleDocumenter):
     missing_modules = set()
 
     def import_object(self):
-        if not super(ModuleDocumenter, self).import_object():
+        if not super().import_object():
             self.missing_modules.add(self.modname)
             return False
         return True
@@ -118,7 +115,7 @@ def header(s, sep=SUBHEADER):
 
 
 def find_python_modules(package):
-    if isinstance(package, string_types):
+    if isinstance(package, str):
         package = importlib.import_module(package)
     name, path = package.__name__, package.__file__
     current_dist_depth = len(name.split('.')) - 1

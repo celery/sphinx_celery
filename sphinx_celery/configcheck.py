@@ -63,9 +63,6 @@ Example:
 
 
 """
-from __future__ import absolute_import, unicode_literals
-
-from six import iterkeys as keys
 
 from sphinx.util.console import bold, green, red
 
@@ -98,9 +95,10 @@ class ConfigCheckBuilder(BaseBuilder):
         self.check_missing()
 
     def documented_settings(self):
+        domaindata_std_objects = self.app.env.domaindata['std']['objects']
         return {
-            name for reftype, name in keys(
-                self.app.env.domaindata['std']['objects'])
+            name
+            for reftype, name in domaindata_std_objects.keys()
             if reftype == 'setting'
         }
 

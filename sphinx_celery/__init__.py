@@ -1,9 +1,7 @@
 """Sphinx Celery Theme."""
-from __future__ import absolute_import, unicode_literals
 
 import os
 import re
-
 from collections import namedtuple
 
 __version__ = '2.0.0'
@@ -36,10 +34,13 @@ def get_html_theme_path():
 
 def get_html_templates_path():
     return os.path.join(
-        os.path.abspath(os.path.dirname((__file__))),
+        os.path.abspath(os.path.dirname(__file__)),
         'templates',
     )
 
 
 def setup(app):
-    app.add_html_theme('sphinx_celery', os.path.abspath(os.path.dirname(__file__)))
+    app.add_html_theme(
+        'sphinx_celery',
+        os.path.abspath(os.path.dirname(__file__)),
+    )

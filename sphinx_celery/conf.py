@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
-
 import os
 import sys
 
 from . import get_html_templates_path
-
-PY3 = sys.version_info[0] >= 3
 
 LINKCODE_URL = 'https://github.com/{proj}/tree/{branch}/{filename}.py'
 GITHUB_BRANCH = 'master'
@@ -54,8 +49,6 @@ INTERSPHINX_MAPPING = {
     'tox': ('https://tox.readthedocs.io/en/latest', None),
 }
 
-string_types = (str,) if PY3 else (basestring,)
-
 
 def add_paths(config_file, path_additions):
     this = os.path.dirname(os.path.abspath(config_file))
@@ -69,7 +62,7 @@ def configure_django(django_settings, **config):
     if django_settings:
         os.environ['DJANGO_SETTINGS_MODULE'] = django_settings
     else:
-        from django.conf import settings  # noqa
+        from django.conf import settings
         if not settings.configured:
             settings.configure(**config)
     try:
@@ -81,7 +74,7 @@ def configure_django(django_settings, **config):
 
 
 def import_package(package):
-    if isinstance(package, string_types):
+    if isinstance(package, str):
         return __import__(package)
     return package
 
@@ -89,9 +82,9 @@ def import_package(package):
 def prepare_intersphinx_mapping(project, mapping,
                                 include, exclude, **extra):
     if include:
-        mapping = dict((k, v) for k, v in mapping.items() if k in include)
+        mapping = {k: v for k, v in mapping.items() if k in include}
     if exclude:
-        mapping = dict((k, v) for k, v in mapping.items() if k not in exclude)
+        mapping = {k: v for k, v in mapping.items() if k not in exclude}
     mapping = dict(mapping, **extra)
 
     # Remove project itself from intersphinx
@@ -157,11 +150,11 @@ def build_config(
     extlinks = extlinks or {}
 
     extlinks.setdefault('sha', (
-        'https://github.com/{0}/commit/%s'.format(github_project),
+        f'https://github.com/{github_project}/commit/%s',
         'GitHub SHA@',
     ))
     extlinks.setdefault('github_branch', (
-        'https://github.com/{0}/tree/%s'.format(github_project),
+        f'https://github.com/{github_project}/tree/%s',
         'GitHub branch',
     ))
     extlinks.setdefault('github_user', (
@@ -212,7 +205,7 @@ def build_config(
         # The master toctree document.
         master_doc=master_doc,
 
-        copyright='{0}, {1}'.format(copyright, author),
+        copyright=f'{copyright}, {author}',
 
         # The short X.Y version.
         version=version,
@@ -270,22 +263,22 @@ def build_config(
 
         man_pages=[
             (master_doc, project.lower(),
-             u'{0} Documentation'.format(project), [author_name], 1)
+             f'{project} Documentation', [author_name], 1)
         ],
 
         # Grouping the document tree into Texinfo files. List of tuples
         # (source start file, target name, title, author,
         #  dir menu entry, description, category)
         texinfo_documents=[
-            (master_doc, project, u'{0} Documentation'.format(project),
+            (master_doc, project, f'{project} Documentation',
              author_name, project, description,
              'Miscellaneous'),
         ],
         latex_logo=latex_logo or html_logo,
 
         latex_documents=[
-            ('index', '{0}.tex'.format(project),
-             '{0} Documentation'.format(project), author, 'manual'),
+            ('index', f'{project}.tex',
+             f'{project} Documentation', author, 'manual'),
         ],
         html_theme='sphinx_celery',
         html_sidebars={
@@ -300,7 +293,7 @@ def build_config(
             ],
         },
         # Bibliographic Dublin Core info.
-        epub_title='{0} Manual, Version {1}'.format(project, version),
+        epub_title=f'{project} Manual, Version {version}',
         epub_author=author_name,
         epub_publisher=publisher or author_name,
         epub_copyright=copyright,
@@ -317,7 +310,7 @@ def build_config(
         epub_identifier=webdomain,
 
         # A unique identification for the text.
-        epub_uid='{0} Manual, Version {0}'.format(project, version),
+        epub_uid=f"{project} Manual, Version {version}",
 
         # A list of files that should not be packed into the epub file.
         epub_exclude_files=['search.html'],
