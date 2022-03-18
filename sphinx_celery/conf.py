@@ -28,7 +28,7 @@ INTERSPHINX_MAPPING = {
     'python': ('https://docs.python.org/dev/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/stable/', None),
     'kombu': ('https://kombu.readthedocs.io/en/master/', None),
-    'celery': ('https://docs.celeryproject.org/en/master', None),
+    'celery': ('https://celery.readthedocs.io/en/master', None),
     'djcelery': ('https://django-celery.readthedocs.io/en/latest/', None),
     'cyme': ('https://cyme.readthedocs.io/en/latest/', None),
     'amqp': ('https://amqp.readthedocs.io/en/latest/', None),
@@ -45,7 +45,7 @@ INTERSPHINX_MAPPING = {
     'eventlet': ('https://eventlet.net/doc/', None),
     'gevent': ('http://www.gevent.org/', None),
     'pyOpenSSL': ('https://pyopenssl.readthedocs.io/en/stable/', None),
-    'pytest': ('https://doc.pytest.org/en/latest/', None),
+    'pytest': ('https://docs.pytest.org/en/latest/', None),
     'tox': ('https://tox.readthedocs.io/en/latest', None),
 }
 
