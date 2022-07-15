@@ -35,7 +35,10 @@ INTERSPHINX_MAPPING = {
     'vine': ('https://vine.readthedocs.io/en/latest/', None),
     'flower': ('https://flower.readthedocs.io/en/latest/', None),
     'redis': ('https://redis-py.readthedocs.io/en/latest/', None),
-    'django': ('http://docs.djangoproject.com/en/dev/', 'https://docs.djangoproject.com/en/dev/_objects'),
+    'django': (
+        'http://docs.djangoproject.com/en/dev/',
+        'https://docs.djangoproject.com/en/dev/_objects',
+    ),
     'boto': ('https://boto.readthedocs.io/en/latest/', None),
     'sqlalchemy': ('https://sqlalchemy.readthedocs.io/en/latest', None),
     'kazoo': ('https://kazoo.readthedocs.io/en/latest/', None),
