@@ -161,7 +161,7 @@ def build_config(
         'https://github.com/%s/', '@',
     ))
     extlinks.setdefault('pypi', (
-        'https://pypi.python.org/pypi/%s/', '',
+        'https://pypi.org/project/%s/', '',
     ))
     extlinks.setdefault('wikipedia', (
         'https://en.wikipedia.org/wiki/%s', '',
