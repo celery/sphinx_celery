@@ -154,20 +154,20 @@ def build_config(
 
     extlinks.setdefault('sha', (
         f'https://github.com/{github_project}/commit/%s',
-        'GitHub SHA@',
+        'GitHub SHA@%s',
     ))
     extlinks.setdefault('github_branch', (
         f'https://github.com/{github_project}/tree/%s',
-        'GitHub branch',
+        'GitHub branch %s',
     ))
     extlinks.setdefault('github_user', (
-        'https://github.com/%s/', '@',
+        'https://github.com/%s/', '@%s',
     ))
     extlinks.setdefault('pypi', (
-        'https://pypi.org/project/%s/', '',
+        'https://pypi.org/project/%s/', None,
     ))
     extlinks.setdefault('wikipedia', (
-        'https://en.wikipedia.org/wiki/%s', '',
+        'https://en.wikipedia.org/wiki/%s', None,
     ))
 
     if not canonical_dev_url:
