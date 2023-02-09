@@ -57,5 +57,5 @@ With pip
 You can install the latest snapshot of sphinx_celery using the following
 pip command::
 
-    $ pip install https://github.com/celery/sphinx_celery#egg=sphinx_celery
+    $ pip install https://github.com/celery/sphinx_celery/zipball/master#egg=sphinx_celery
 
