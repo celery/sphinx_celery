@@ -172,7 +172,7 @@ def build_config(
 
     if not canonical_dev_url:
         canonical_dev_url = '/'.join([
-            canonical_url.rstrip('/'), 'en', 'master',
+            canonical_url.rstrip('/'), 'en', 'main',
         ])
     if not canonical_stable_url:
         canonical_stable_url = '/'.join([
