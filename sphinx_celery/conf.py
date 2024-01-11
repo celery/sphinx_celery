@@ -38,7 +38,7 @@ INTERSPHINX_MAPPING = {
     'redis': ('https://redis-py.readthedocs.io/en/latest/', None),
     'django': (
         'http://docs.djangoproject.com/en/dev/',
-        'https://docs.djangoproject.com/en/dev/_objects',
+        'https://doc.djangoproject.com/en/dev/_objects',
     ),
     'boto': ('https://boto.readthedocs.io/en/latest/', None),
     'sqlalchemy': ('https://sqlalchemy.readthedocs.io/en/latest', None),
@@ -49,7 +49,7 @@ INTERSPHINX_MAPPING = {
     'eventlet': ('https://eventlet.net/doc/', None),
     'gevent': ('http://www.gevent.org/', None),
     'pyOpenSSL': ('https://pyopenssl.readthedocs.io/en/stable/', None),
-    'pytest': ('https://docs.pytest.org/en/latest/', None),
+    'pytest': ('https://doc.pytest.org/en/latest/', None),
     'tox': ('https://tox.readthedocs.io/en/latest', None),
 }
 
