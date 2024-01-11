@@ -27,8 +27,9 @@ EXTENSIONS = [
 INTERSPHINX_MAPPING = {
     'python': ('https://docs.python.org/dev/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/stable/', None),
-    'kombu': ('https://kombu.readthedocs.io/en/master/', None),
-    'celery': ('https://celery.readthedocs.io/en/master', None),
+    'kombu': ('https://kombu.readthedocs.io/en/main/', None),
+    'celery': ('https://celery.readthedocs.io/en/main/', None),
+    'pytest-celery': ('https://pytest-celery.readthedocs.io/en/main/', None),
     'djcelery': ('https://django-celery.readthedocs.io/en/latest/', None),
     'cyme': ('https://cyme.readthedocs.io/en/latest/', None),
     'amqp': ('https://amqp.readthedocs.io/en/latest/', None),
