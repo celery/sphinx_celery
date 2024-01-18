@@ -2,7 +2,7 @@
  Celery Sphinx Utilities
 =====================================================================
 
-:Version: 2.1.2
+:Version: 2.1.3
 :Download: http://pypi.python.org/pypi/sphinx_celery/
 :Source: http://github.com/celery/sphinx_celery/
 :Keywords: Sphinx, documentation, python
