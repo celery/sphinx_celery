@@ -5,7 +5,13 @@
 :Version: 2.1.3
 :Download: http://pypi.python.org/pypi/sphinx_celery/
 :Source: http://github.com/celery/sphinx_celery/
+:DeepWiki: |deepwiki|
 :Keywords: Sphinx, documentation, python
+
+.. |deepwiki| image:: https://devin.ai/assets/deepwiki-badge.png
+    :alt: Ask http://DeepWiki.com
+    :target: https://deepwiki.com/celery/sphinx_celery
+    :width: 125px
 
 About
 =====

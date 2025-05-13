@@ -26,3 +26,5 @@ celery/tests/cover/
 cover/
 .vagrant/
 *.sqlite3
+.python-version
+.env
